@@ -63,3 +63,4 @@ D:\dotnet\BTVN_StateManagement\StateManagement\obj\Debug\net8.0\ref\StateManagem
 D:\dotnet\BTVN_StateManagement\StateManagement\bin\Debug\net8.0\StateManagement.staticwebassets.endpoints.json
 D:\dotnet\BTVN_StateManagement\StateManagement\obj\Debug\net8.0\staticwebassets.build.endpoints.json
 D:\dotnet\BTVN_StateManagement\StateManagement\obj\Debug\net8.0\staticwebassets\msbuild.StateManagement.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+D:\dotnet\BTVN_StateManagement\StateManagement\obj\Debug\net8.0\StateManagement.sourcelink.json
