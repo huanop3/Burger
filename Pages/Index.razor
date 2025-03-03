@@ -1,0 +1,71 @@
+﻿@page "/"
+@inject BurgetStateService Bsservice;
+<h3 class="text-success"> Bài tập Burget CyberSoft</h3>
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-6 text-center">
+            <h3 class="text-danger">Bánh burget của bạn</h3>
+            <div class="mt-5">
+                <div class="breadTop"></div>
+                @foreach(var item in Bsservice.lstFood){
+                    for (int i=0;i<item.quantity;i++){
+                        <div class="@item.name"></div>
+                    }
+                }
+                <div class="breadBottom"></div>
+
+            </div>
+
+        </div>
+        <div class="col-6 text-center">
+            <h3 class="text-success">Chọn thức ăn</h3>
+            <div class="table-responsive mt-5">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Thức ăn</th>
+                            <th scope="col"></th>
+                            <th scope="col">Đơn giá</th>
+                            <th scope="col">Thành tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach(var item in Bsservice.lstFood){
+                        <tr class="">
+                            <td scope="row">@item.name
+
+                            </td>
+                            <td>
+                                <button class="btn btn-success" @onclick="(e) => AddValue(item)"><i class="fa fa-plus"></i></button>
+                                @item.quantity
+                                <button class="btn btn-danger" @onclick="(e) => DeleteValue(item)"><i class="fa fa-minus"></i></button>
+                            </td>
+                            <td>@item.unitPrice</td>
+                            <td>@Bsservice.TotalPrice(item)</td>
+                        </tr>
+                    }
+                        
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+@code{
+    protected override async Task OnInitializedAsync(){
+        Bsservice.OnChange += StateHasChanged;
+    }
+    public void AddValue(Ingredient Item){
+        Bsservice.AddIngredient(Item);
+    }
+    public void DeleteValue(Ingredient Item){
+        Bsservice.RemoveIngredient(Item);
+    }
+        public void Dispose(){
+        Bsservice.OnChange -= StateHasChanged;
+    }
+}
